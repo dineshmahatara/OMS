@@ -1,0 +1,65 @@
+
+
+[
+    {
+      "key": "home",
+      "icon": "HomeOutlined",
+      "title": "Home",
+      "allowedRoles": ["SuperAdmin", "Admin", "SectionAdmin"],
+      "children": []
+    },
+    {
+      "key": "profile",
+      "icon": "UserOutlined",
+      "title": "Profile",
+      "allowedRoles": ["SuperAdmin", "Admin", "SectionAdmin"],
+      "children": [
+        {
+          "key": "profile-view",
+          "title": "View Profile",
+          "allowedRoles": ["SuperAdmin", "Admin", "SectionAdmin"],
+          "children": []
+        },
+        {
+          "key": "profile-edit",
+          "title": "Edit Profile",
+          "allowedRoles": ["SuperAdmin", "Admin"],
+          "children": []
+        }
+      ]
+    },
+    {
+      "key": "settings",
+      "icon": "SettingOutlined",
+      "title": "Settings",
+      "allowedRoles": ["SuperAdmin", "Admin"],
+      "children": [
+        {
+          "key": "settings-account",
+          "title": "Account Settings",
+          "allowedRoles": ["SuperAdmin", "Admin"],
+          "children": []
+        },
+        {
+          "key": "settings-preferences",
+          "title": "Preferences",
+          "allowedRoles": ["SuperAdmin", "Admin"],
+          "children": [
+            {
+              "key": "settings-theme",
+              "title": "Theme",
+              "allowedRoles": ["SuperAdmin", "Admin"],
+              "children": []
+            },
+            {
+              "key": "settings-language",
+              "title": "Language",
+              "allowedRoles": ["SuperAdmin", "Admin"],
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

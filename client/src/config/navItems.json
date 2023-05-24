@@ -1,0 +1,24 @@
+{
+    "Admin": {
+        "navItem": [
+            {"label": "Home", "link": "/"},
+            {"label": "Profile", "link": "/profile"},
+            {"label": "User Management", "link": "/user"},
+            {"label": "Forms", "link": "Admin/form"}
+             ]
+    },
+    "SuperAdmin": {
+        "navItem": [
+            {"label": "Home", "link": "/"},
+            {"label": "Profile", "link": "/profil"},
+            {"label": "Rides", "link": "/rides"}
+                 ]
+    },
+    "SectionAdmin": {
+        "navItem": [
+        {"label": "Home", "link": "/"},
+        {"label": "Profile", "link": "/"},
+        {"label": "Earnings", "link": "/"}
+        ]
+    }
+}

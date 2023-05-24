@@ -1,0 +1,91 @@
+.Home_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5%;
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://www.nepalhiking.com/wp-content/uploads/2022/11/where_is_nepal_on_map.png");
+  background-size: cover;
+  height: 100vh;
+  border-radius: 90ppx;
+}
+
+.UserInput {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgb(191, 26, 26);
+  font-size: 1rem;
+  width: 80%;
+  margin-bottom: 1rem;
+  background: transparent;
+  /* border: none; */
+}
+.Form_button {
+  background-color: #4cb944;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  /*   width: 100%;
+  padding: 10px;
+  line-height: 15spx;
+  background-color: #4cb944;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid darkgray;*/
+}
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.toggleContainer span {
+  margin-right: 10px;
+}
+.errormessage {
+color: red;
+}
+.login_page {
+  background-image: url('../images/nepal\ image.png'); /* Replace with your map image path */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_form_container {
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity */
+
+  border-radius: 8px;
+  align-items: center;
+  text-align: center;
+}
+.login_register_logo{
+  background-image: url('../images/nepalgovlogo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  width: 90px;
+}

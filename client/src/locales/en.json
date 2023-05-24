@@ -1,0 +1,43 @@
+
+  {
+    "home": "Home",
+    "about": "About",
+    "admin": "Admin",
+      "initial setup": "Initial Setup",
+      "first name": "First Name",
+      "middle name": "Middle Name",
+      "last name": "Last Name",
+      "employee designation": "Employee Designation",
+      "permanent address": "Permanent Address",
+      "father name": "Father Name",
+      "mother name": "Mother Name",
+      "grand father name": "Grand Father Name",
+      "trustable person name": "Trustable Person Name",
+      "phone no": "Phone No",
+      "email address": "Email Address",
+      "spouse name": "Spouse Name",
+      "date of birth": "Date of Birth",
+      "date of provisional appointment": "Date of Provisional Appointment",
+      "date of permanent appointment": "Date of Permanent Appointment",
+      "transferred from office": "Transferred From Office",
+      "date of office leave": "Date of Office Leave",
+      "transferred to office": "Transferred To Office",
+      "is active value": "Is Active Value",
+      "employee bank account no": "Employee Bank Account No",
+      "employee bank name": "Employee Bank Name",
+      "employee national id no": "Employee National ID No",
+      "employee citizenship no": "Employee Citizenship No",
+      "employee ucin no": "Employee UCIN No",
+      "employee": "Employee PAN No",
+      "office information":"Office Information",
+      "family information":"Family Information",
+      "other information":"Other Information",
+      "personal information":"Personal Information",
+      "moms":"Municipality Office Management System",
+      "change password":"Change Password",
+      "logout":"Logout",
+      "my profile":"My Profile"
+      
+    }
+    
+  
