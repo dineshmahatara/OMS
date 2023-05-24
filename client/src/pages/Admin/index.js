@@ -26,7 +26,7 @@ const Homepage = () => {
       <p>{t("contact")}</p>
     </div>
           
-          Content goes here</div>
+          Content goes hehere snadre</div>
         </Content>
       </Layout>
     </Layout>
