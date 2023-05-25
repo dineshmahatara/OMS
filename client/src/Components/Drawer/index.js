@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 import Image from 'next/image';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const CustomDrawer = (props) => {
   const dispatch = useDispatch()

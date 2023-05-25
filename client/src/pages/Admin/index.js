@@ -6,7 +6,6 @@ import Sidebar from '../../Components/Sidebar';
 import { Layout } from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
-import CustomDrawer from '../../Components/Drawer'
 const { Content, Sider } = Layout;
 const Homepage = () => {
   const { token,setUserDetails, role } = useSelector(state => state.user);
@@ -14,8 +13,10 @@ const Homepage = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}> 
       <Layout>
+      <sider>
+    
+      </sider>
         <Navbar />
-            <div style={{height:'4', width:5, marginTop:-50}}> <CustomDrawer/></div>
 
         <Content style={{ margin: '20px' }}>
           <div style={{ padding: '50px', minHeight: '360px', backgroundColor: '#4ebf93' }}>

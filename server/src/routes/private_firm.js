@@ -1,0 +1,6 @@
+const express=require('express')
+const router=express.Router()
+const PrivateFirms = require('../model/private_firm')
+const PrivateFirm = require('../controller/private_firm');
+router.post('/registerPrivateFirm', PrivateFirm.registerPrivateFirm)
+module.exports=router;

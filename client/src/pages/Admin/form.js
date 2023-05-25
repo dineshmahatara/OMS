@@ -7,28 +7,22 @@ import { Layout } from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
 import CustomDrawer from '../../Components/Drawer'
+import staffsEntryForm from '../staffs/staffsEntryForm';
 const { Content, Sider } = Layout;
 const Homepage = () => {
   const { token,setUserDetails, role } = useSelector(state => state.user);
   const { t, locale, setLocale } = useTranslation();
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible>
-        <Sidebar />
-        <CustomDrawer/>
-      </Sider>
+    <Layout style={{ minHeight: '100vh' }}> 
       <Layout>
         <Navbar />
-        <Content style={{ margin: '16px' }}>
-          <div style={{ padding: '24px', minHeight: '360px', backgroundColor: 'red' }}>
-          <div>
+            <div style={{height:'4', width:5, marginTop:50}}> <CustomDrawer/></div>
 
-      <h1>{t("home")}</h1>
-      <p>{t("about")}</p>
-      <p>{t("contact")}</p>
-    </div>
+        <Content style={{ margin: '20px' }}>
+          <div style={{ padding: '50px', minHeight: '360px', backgroundColor: '#4ebf93' }}>
           
-          Content goes here</div>
+          
+          <staffEntryform/> </div>
         </Content>
       </Layout>
     </Layout>
