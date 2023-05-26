@@ -1,6 +1,7 @@
 const Private_Firms = require('../model/private_firm')
 
 const registerPrivateFirm= async (req, res) => {
+  console.log(req.body)
     const data = await Private_Firms.findOne({ FormPanNo: req.body.FormPanNo })
     if (data) {
       res.json({

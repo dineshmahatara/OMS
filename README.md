@@ -12,6 +12,9 @@ Auth
 - [x] Nav Bar Complete
 - [x] Language Switcher Complete  Initialization 
 - [x]  Nepali Date Picker
+Firm Registration
+- [x] Creating Api for Registration
+- [] 
 
 
 

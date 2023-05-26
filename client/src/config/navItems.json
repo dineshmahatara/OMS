@@ -4,7 +4,8 @@
             {"label": "Home", "link": "/"},
             {"label": "Profile", "link": "/profile"},
             {"label": "User Management", "link": "/user"},
-            {"label": "Forms", "link": "Admin/form"}
+            {"label": "Forms", "link": "Admin/form"},
+            {"label": "Private Firm", "link": "Admin/privateFirmEntry"}
              ]
     },
     "SuperAdmin": {
