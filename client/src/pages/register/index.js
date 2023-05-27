@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React,{useState,useEffect,useRef} from 'react';
  import { Formik, Form, Field } from 'formik';
  import * as Yup from 'yup';
  import Link from 'next/link';
@@ -34,13 +35,18 @@ import login from '../SectionAdmin'
 
 
  const Register = () => {
+  const inputRef= useRef(null)
+  
   const [messageApi, contextHolder] = message.useMessage();
   const router = useRouter();
   const [file,setFile]= useState(null)
- 
-  const registerUser = async(values)=> {
-   var formData = new FormData();
 
+  const registerUser = async(values)=> {
+    useEffect(()=>{
+      inputRef.current.focus()
+    },[])
+   var formData = new FormData();
+  
    const keys= Object.keys(values)
    keys.forEach((item)=>{
     formData.append(item,values[item]);
@@ -92,7 +98,7 @@ import login from '../SectionAdmin'
           <h1>Municipality  MIS</h1> 
           <div className={styles.login_register_logo}
               alt="Logo"/>
-            <Field className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />} name="fullName" placeholder="fullName" />
+            <Field ref={inputRef} className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />}  name="fullName" placeholder="fullName" />
             {errors.fullName && touched.fullName ? (
               <div className={styles.errormessage}>{errors.fullName}</div>
             ) : null}

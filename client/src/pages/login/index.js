@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react';
+import React,{useEffect,useRef} from 'react';
 import { Inter } from 'next/font/google'
 import Home from '../Home'
 import { Button, message, Form,Input ,Space } from 'antd';
@@ -15,6 +15,11 @@ import {formcontainer,login_page,login_register_logo,userInput,login_form_contai
 const inter = Inter({ subsets: ['latin'] })
 
 const LoginUser = ()=> {
+  const inputRef= useRef(null)
+  useEffect(()=>{
+    inputRef.current.focus()
+  },[])
+
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   const [ phoneNumber, setPhoneNumber] = useState('')
   const [ password, setPassword] = useState('')
@@ -69,7 +74,7 @@ const LoginUser = ()=> {
     <div className={login_register_logo} alt="Logo"/>
      <Form className={login_form_container}>
 
-            <Input size="large" placeholder="Mobile Number" onChange={(e)=>setPhoneNumber(e.target.value)} prefix={<UserOutlined />}/><br/>
+            <Input size="large" ref={inputRef} placeholder="Mobile Number" onChange={(e)=>setPhoneNumber(e.target.value)} prefix={<UserOutlined />}/><br/>
             <br/>
             <Input.Password size="large" placeholder="password" onChange={(e)=>setPassword(e.target.value)} prefix={<KeyOutlined/>} iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}/><br/>
             

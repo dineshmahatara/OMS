@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
  import { Formik, Form, Field } from 'formik';
  import * as Yup from 'yup';
@@ -17,8 +18,7 @@ import login from '../SectionAdmin'
      .min(2, 'Too Short!')
      .max(50, 'Too Long!')
      .required('Required'),
-    phoneNumber:Yup.string()
-    .typeError('must be a number'),
+    phoneNumber:Yup.string().typeError('must be a number'),
    Province: Yup.string() .required('Required'),
    District: Yup.string() .required('Required'),
    Municipality: Yup.string() .required('Required'),
