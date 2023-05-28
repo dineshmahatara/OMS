@@ -36,15 +36,17 @@ import login from '../SectionAdmin'
 
  const Register = () => {
   const inputRef= useRef(null)
+  useEffect(()=>{
+    inputRef?.current?.focus()
+  },[])
+
   
   const [messageApi, contextHolder] = message.useMessage();
   const router = useRouter();
   const [file,setFile]= useState(null)
 
   const registerUser = async(values)=> {
-    useEffect(()=>{
-      inputRef.current.focus()
-    },[])
+   
    var formData = new FormData();
   
    const keys= Object.keys(values)
@@ -62,7 +64,8 @@ import login from '../SectionAdmin'
     const data = await res.json()
     console.log(data)
     if(res && data.success){
-      messageApi.success(data.msg);
+      messageApi.success(data.msg)
+      router.push('/login');
     }else{
       messageApi.error(data.msg);
     }
@@ -75,6 +78,7 @@ import login from '../SectionAdmin'
     console.log(e.target.files)
     setFile(e.target.files[0])
    }
+ 
    return (
     <div className={styles.formcontainer}>
     
