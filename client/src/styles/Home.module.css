@@ -94,6 +94,17 @@ border: 0;
   max-width: 100%;
 }
 
+.cart {
+  width: 30%;
+  height: 130px;
+  padding: 14px;
+  line-height: 15spx;
+  background-color: #4cb944;
+  color: white;
+  margin:10px;
+  border: 1px solid darkgray;
+  margin-top: 5%;
+}
 .card {
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);

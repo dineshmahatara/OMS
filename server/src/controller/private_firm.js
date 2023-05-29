@@ -20,8 +20,10 @@ const registerPrivateFirm= async (req, res) => {
     }
 const showPrivateFirm= async (req, res) => {
   console.log(req.body)
-    const data = await Private_Firms.find()
-    res.json({data:data})
+    const data = await Private_Firms.find({Formstatus: req.query.Formstatus}).skip((req.query.page-1 )* 2).limit(8)
+    res.json({
+      firmsList:data
+    })
     console.log(data)
     }
     const deletePrivateFirm= async (req, res) => {

@@ -3,34 +3,26 @@ import {logout,setUserDetails,fullName,phoneNumber,setToken} from '../../redux/r
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../Components/Navbar';
 import { useState, useEffect } from 'react';
-
-import { Layout } from 'antd';
+import Card from '../../Components/Card'
+import { Layout,Pagination,Skeleton,Col,Row, Space} from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
 const { Content, Sider } = Layout;
 const Homepage = () => {
   const { token,setUserDetails,fullName,phoneNumber,role,id } = useSelector(state => state.user);
   const { t, locale, setLocale } = useTranslation();
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/showPrivateFirm');
-      const data = await response.json();
-      
-      console.log(data)
-      setData(data.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-  if (!Array.isArray(data) || data.length === 0) {
-    return <p>No data available.</p>;
+  const [firmsList, setFirmList] = useState([])
+  const fetchFirms = async(page=2)=>{
+      const res = await fetch('http://localhost:3001/showPrivateFirm?FormStatus=Passive&page='+page)
+      const data= await res.json()
+      if(data){
+        setFirmList(data.firmsList)
+      }
   }
+  useEffect(()=>{
+    fetchFirms()
+  },[])
+    
   return (
     <Layout style={{ minHeight: '100vh' }}> 
       <Layout>
@@ -39,53 +31,22 @@ const Homepage = () => {
       </sider>
         <Navbar />
 
-        <Content style={{ margin: '20px' }}>
-          <div style={{ padding: '50px', minHeight: '360px', backgroundColor: '#4ebf93' }}>
+        <Content style={{ margin: '20px', textAlign:'center' }}>
+        
+          <div style={{ padding: '50px', minHeight: '360px', backgroundColor: 'gray' }}>
+          <h1>Hello</h1>
+         
+       
+        
+         
+        {firmsList.length> 0 ? firmsList.map((item)=>{
+            return( <Card item={item}/>)
+          }) : <Skeleton />}
+          <Pagination defaultCurrent={0} total={10} pageSize={2} onChange={(page)=>fetchFirms(page)}/>
+         
       
-    <div>
-    <table border={1} align='center'>
-      <thead>
-        <tr>
-          
-      <th>FormName</th>
-      <th>FormObjective</th>
-      <th>FormType</th>
-      <th>Province</th>
-      <th>District</th>
-      <th>Municipality</th>
-      <th>WardNo</th>
-      <th>Tol</th>
-      <th>FormPanNo</th>
-      <th>RegistrationDate</th>
-      <th>FormStatus</th>
-      <th>edit</th>
-      <th>delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            
-      <td>{item.FormName}</td>
-      <td>{item.FormObjective}</td>
-      <td>{item.FormType}</td>
-      <td>{item.Province}</td>
-      <td>{item.District}</td>
-      <td>{item.Municipality}</td>
-      <td>{item.WardNo}</td>
-      <td>{item.Tol}</td>
-      <td>{item.FormPanNo}</td>
-      <td>{item.RegistrationDate}</td>
-      <td>{item.FormStatus}</td>
-      <td>edit</td>
-      <td>delete</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-         </div>
-        </Content>
+        </div>
+        </Content> 
       </Layout>
     </Layout>
   );
