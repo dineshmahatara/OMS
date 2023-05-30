@@ -18,9 +18,17 @@ const registerPrivateFirm= async (req, res) => {
         }
       }
     }
-const showPrivateFirm= async (req, res) => {
+const getPrivateFirm= async (req, res) => {
   console.log(req.body)
     const data = await Private_Firms.find({Formstatus: req.query.Formstatus}).skip((req.query.page-1 )* 2).limit(8)
+    res.json({
+      firmsList:data
+    })
+    console.log(data)
+    }
+const getPrivateFirmById= async (req, res) => {
+  console.log(req.body)
+    const data = await Private_Firms.findById(req.params.id,)
     res.json({
       firmsList:data
     })
@@ -46,7 +54,8 @@ const showPrivateFirm= async (req, res) => {
   
   module.exports = {
     registerPrivateFirm,
-    showPrivateFirm,
-    deletePrivateFirm
+    getPrivateFirm,
+    deletePrivateFirm,
+    getPrivateFirmById
   
     }

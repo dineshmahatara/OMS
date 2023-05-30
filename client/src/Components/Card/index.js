@@ -1,10 +1,12 @@
 import { Card } from 'antd';
 import styles from '@/styles/Home.module.css'
-
+import { useRouter } from 'next/router';
 const CustomCard = (props) => {
+  const router = useRouter();
  return(
    
-   <Card
+  //  <Card onClick={()=> router.push('/getPrivateFirm/'+props.item._id)}
+   <Card onClick={() => router.push(`/getPrivateFirm/${props.item._id}`)}
     title={props.item.FormName}
     bordered={false}
     extra={<a href="#">Edit</a>}
