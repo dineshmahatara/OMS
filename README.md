@@ -14,7 +14,7 @@ Auth
 - [x]  Nepali Date Picker
 Firm Registration
 - [x] Creating Api for Registration
-- [] 
+- [] Single Page View
 
 
 
