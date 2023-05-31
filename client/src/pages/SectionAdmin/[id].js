@@ -1,61 +1,39 @@
 import { useRouter } from 'next/router';
-import {useEffect, useState} from 'react'
-export default function Page() {
-  const router = useRouter();
-  useEffect(()=>{
-    fetchRidesDetails()
-  }, [])
-  const fetchRidesDetails = () => {
-    //       fetch('http://localhost:4000/rides/'+router.query.id)
-  }
-  return <p>Post: {router.query.id}</p>;
-}
-// import {logout,setUserDetails,fullName,phoneNumber,setToken} from '../../redux/reducerSlice/userSlice'
-// import { useDispatch, useSelector } from 'react-redux';
-// import Navbar from '../../Components/Navbar';
-// import { useState, useEffect } from 'react';
-// import Card from '../../Components/Card'
-// import { Layout,Pagination,Skeleton,Col,Row, Space} from 'antd';
-// import Login from '../login';
-// import { useTranslation } from "../lib/useTranslation";
-// import router from '../../../../server/src/routes/private_firm';
-// import { useRouter } from 'next/router';
-// const { Content, Sider } = Layout;
-// const router=useRouter();
-// useEffect(()=>{
-//   fetchFirms()
-// },[])
-// const Homepage = () => {
-//   const { token,setUserDetails,fullName,phoneNumber,role,id } = useSelector(state => state.user);
-//   const { t, locale, setLocale } = useTranslation();
-//   const [firmsList, setFirmList] = useState([])
-//   const fetchFirms = async()=>{
-//       const res = await fetch('http://localhost:3001/showPrivateFirm/'+router.query.id)
-//       const data= await res.json()
-//       if(data){
-//         setFirmList(data.firmsList)
-//       }
-//   }
-//   return (
-//     <Layout style={{ minHeight: '100vh' }}> 
-//       <Layout>
-//       <sider>
-    
-//       </sider>
-//         <Navbar />
+import { useEffect, useState } from 'react';
 
-//         <Content style={{ margin: '20px', textAlign:'center' }}>
-        
-//           <div style={{ padding: '50px', minHeight: '360px', backgroundColor: 'gray' }}>
-//           <h1>Hello : {router.query.id}</h1>
-        
-       
-        
+const PrivateFirm = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [firmDetails, setFirmDetails] = useState('');
+
+  useEffect(() => {
+    const fetchFirmDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/PrivateFirm/${router.query.id}`);
+        const data = await response.json();
+        // Set the fetched firm details in the state
+        setFirmDetails(data.firmDetails);
+        console.log(firmDetails)
+        // console.log(data)
+      } catch (error) {
+        console.error('Error fetching firm details:', error);
+      }
+    };
+    fetchFirmDetails();
+  }, [id]);
+
+  return (
+    <div>
+      <h1>Firm Details</h1>
+      <p>Firm ID: {id}</p>
+    
+        <div>
+          <p>Form Name: {firmDetails.FormName}</p>
+          <p>District: {firmDetails.District}</p>
+        </div>
       
-//         </div>
-//         </Content> 
-//       </Layout>
-//     </Layout>
-//   );
-// };
-// export default Homepage;
+    </div>
+  );
+};
+
+export default PrivateFirm;
