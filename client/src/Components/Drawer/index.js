@@ -4,7 +4,7 @@ import { MenuOutlined, UserOutlined, LockOutlined, LogoutOutlined } from '@ant-d
 import navItems from '../../config/navItems.json'
 import { logout,setToken,setRole } from '../../redux/reducerSlice/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Navbar from '../Navbar';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 import Image from 'next/image';
@@ -38,8 +38,8 @@ const CustomDrawer = (props) => {
     );
 
   return (
-    <>
-      <Button type="primary" onClick={showDrawer}>
+    <><Navbar/>
+      <Button type="primary" style={{marginTop:-44,position:'absolute'}} onClick={showDrawer}>
         <MenuOutlined />
       </Button>
       <Drawer
@@ -54,6 +54,7 @@ const CustomDrawer = (props) => {
         footer={
           <header className="navbar">
       {/* Your other navbar contents */}
+      
                   
       <div className="navbar-center"  >
         <Dropdown overlay={menu} placement="bottomRight">

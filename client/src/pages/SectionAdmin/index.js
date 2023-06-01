@@ -29,7 +29,7 @@ const Homepage = () => {
         <sider>
 
         </sider>
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Content style={{ margin: '20px', textAlign: 'center' }}>
 
@@ -42,9 +42,7 @@ const Homepage = () => {
             {firmsList.length > 0 ? firmsList.map((item) => {
               return (<Card item={item} />)
             }) : <Skeleton />}
-            <Pagination defaultCurrent={0} total={10} pageSize={2} onChange={(page) => fetchFirms(page)} />
-
-
+            <Pagination defaultCurrent={0} total={5} pageSize={2} onChange={(page) => fetchFirms(page)} />
           </div>
         </Content>
       </Layout>

@@ -38,7 +38,7 @@ const Main = () => {
   }
   return (
     <div>
-    
+        {/* <Navbar/> */}
       {role ?<CustomDrawer/>: null }
       {token ? <Dashboard/> : <Auth/>}
     </div>

@@ -3,5 +3,178 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
   
+  }
+
+  .PrivateFormPage{
+    background-color:wheat;
+    margin-left: 304px;
+
+    height: 1200px;
+    width: 880px;
+    border:500cm;
+    /* border-radius: 33;
+    border-color: blue; */
+    /* border: 2px solid;
+    border-color: black; */
+    
+  
+  }
+  .pfborder {
+    background-color:wheat;
+    margin: 10px;
+    
+
+    height: 1180px;
+    width: 860px;
+    /* border:500cm; */
+    --b: 10px;  /* border thickness */
+    --s: 30px; /* size of the dashes */
+    --c1: #215A6D;
+    --c2: #92C7A3;
+    aspect-ratio: 1;
+    position: absolute;
+  }
+  .pfborder::before {
+    content:"";
+    position: absolute;
+    inset: 0;
+    padding: var(--b);
+    background: 
+      repeating-conic-gradient(var(--c1) 0 25%,var(--c2) 0 50%) 
+      0 0/var(--s) var(--s) round;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+  }
+  .documentHeader{
+    background-color: red;
+    color: white;
+    font-size: large;
+    text-align: center;
+    margin-top: 90px;
+    border-radius: 16px;
+    height: 33px;
+    width: 300px;
+    position: static;
+    margin-left: 300px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+  }
+  .PrivateFormPageContainer{
+  position: relative;
+  margin-top: 3333px;
+  margin: 50px;
+
+
+  }
+  .letterhead{
+    margin: 333;
+    margin-top: 10px;
+    font-size: 500px;
+    padding-top: 63px;
+  }
+ 
+  .signature{
+    text-align: center;
+    margin-left: 409px;
+
+  }
+  .privateFormreg{
+    text-align: left;
+    margin: 50px;
+    margin-top: -3px;
+    position: absolute;
+
+    /* // प्रा.फ दर्ता नं./ */
+  }
+  .PrivateFormPage p{
+    color: black;
+    font-weight: 400;
+    margin: 50px;
+    text-decoration: solid;
+    -ms-text-kashida-space: initial;
+    line-height:30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+  }
+  .privateHeader p{
+    text-align: center;
+    font: 100;
+
+  }
+  .PrivateFormPage h1{
+    font-size: large;
+    margin: auto;
+    color: red;
+  }
+  .PrivateFormPage p {
+  
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    color: black;
+    position:justify;
+    margin: 5px;
+
+  }
+  .letterheadLogo{
+    background-image: url('../images/nepalgovlogo.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: center;
+    position: absolute;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 150px;
+  }
+  .letterheadphoto{
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-items: center;
+    position: absolute;
+    margin-left: 670px;
+    margin-top: 50px;
+    text-align: right;
+    align-items: right;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    border-color: black;
+  }
+  .letterhead p{
+    color:black;
+    font-size: small;
+  }
+  .PrivateFormTable{
+    border: 3px solid #000;
+    margin: 15px;
+    height: 1115px;
+    width: 830px;
+    border:500cm;
+    position: static;
+  
+  }
+  .PrivateFormTable tr {
+    /* border: #000 solid; */
+    background-color: white;
+    border-color: rebeccapurple;
+    height: 11;
+    border: #000;
+    border: 1px;
+    /* background-color: red; */
+  
+  }
+  .PrivateFormTable th {
+    font-size: larger;
+    height: 14px;
+    border: #000;
+    border: 1px;
+  }

@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <Layout.Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop:-55 }}>
+    <Layout.Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <div className="logo" />
       <div className="center-heading" style={{color:'white',fontSize:25}}>{t("moms")}</div>
       <Space wrap>
