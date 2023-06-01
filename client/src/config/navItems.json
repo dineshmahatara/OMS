@@ -19,7 +19,9 @@
         "navItem": [
         {"label": "Home", "link": "/"},
         {"label": "Profile", "link": "/"},
-        {"label": "Earnings", "link": "/"}
+        {"label": "Earnings", "link": "/"},
+        {"label": "Forms", "link": "Admin/form"},
+        {"label": "Private Firm", "link": "Admin/privateFirmEntry"}
         ]
     }
 }
