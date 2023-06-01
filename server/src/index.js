@@ -5,14 +5,15 @@ const userRoute = require('./routes/user')
 const privateFirmRoute = require('./routes/private_firm')
 
 const app = express()
+
+app.use(cors())
 require('dotenv').config()
 const port = process.env.PORT
 dbConnect()
-app.use(express.json({limit:'50mb'}))
+app.use(express.json({ limit: '50mb' }));
 
-app.use(cors())
-app.use('/',userRoute)
-app.use('/',privateFirmRoute)
+app.use('/', userRoute)
+app.use('/', privateFirmRoute)
 
 
 app.listen(port, () => {
