@@ -9,14 +9,24 @@ const PrivateFirm = () => {
   useEffect(() => {
     const fetchFirmDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/PrivateFirm/${router.query.id}`);
-        const data = await response.json();
-        // Set the fetched firm details in the state
-        setFirmDetails(data.firmDetails);
-        console.log(firmDetails)
+        if(router.query.id) {
+          const response = await fetch('http://localhost:3001/PrivateFirm/'+router.query.id);
+        
+          const data = await response.json();
+          if(data) {
+            console.log(data)
+            setFirmDetails(data.firmDetails);
+          }
+          
+          
+          // Set the fetched firm details in the state
+          
+          
+        }
+    
         // console.log(data)
       } catch (error) {
-        console.error('Error fetching firm details:', error);
+        console.error('Erro:', error);
       }
     };
     fetchFirmDetails();
@@ -28,8 +38,9 @@ const PrivateFirm = () => {
       <p>Firm ID: {id}</p>
     
         <div>
-          <p>Form Name: {firmDetails.FormName}</p>
-          <p>District: {firmDetails.District}</p>
+        {JSON.stringify(firmDetails)}
+        {JSON.stringify(firmDetails)}
+     {/* {firmDetails.FormPanNo} */}
         </div>
       
     </div>
