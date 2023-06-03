@@ -61,18 +61,24 @@ import login from '../SectionAdmin'
 
   try{
     const res = await fetch('http://localhost:3001/register',requestOptions)
-    const data = await res.json()
-    console.log(data)
-    if(res && data.success){
-      messageApi.success(data.msg)
+       const data = await res.json();
+    console.log(data);
+    if (res && data.success) {
+      messageApi.success(data.msg);
       router.push('/login');
-    }else{
-      messageApi.error(data.msg);
+    } else {
+      if (data.fileSizeError) {
+        messageApi.error('File size exceeds the allowed limit of 2MB.');
+      } else if (data.fileTypeError) {
+        messageApi.error('Invalid file type. Only JPG, JPEG, PNG, BMP, WEBP, SVG, and GIF files are allowed.');
+      } else {
+        messageApi.error(data.msg);
+      }
     }
-    }catch(err){
-      messageApi.warning(data.msg);
-    }
-   }
+  } catch (err) {
+    messageApi.warning('An error occurred while registering.');
+  }
+};
   
    const handleFileSave =(e)=>{
     console.log(e.target.files)
