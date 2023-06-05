@@ -67,12 +67,11 @@ import login from '../SectionAdmin'
       messageApi.success(data.msg);
       router.push('/login');
     } else {
+      
       if (data.fileSizeError) {
         messageApi.error('File size exceeds the allowed limit of 2MB.');
-      } else if (data.fileTypeError) {
-        messageApi.error('Invalid file type. Only JPG, JPEG, PNG, BMP, WEBP, SVG, and GIF files are allowed.');
-      } else {
-        messageApi.error(data.msg);
+      } else  {
+        messageApi.error('Only JPG, JPEG, PNG, BMP, WEBP, SVG, and GIF files are allowed.');
       }
     }
   } catch (err) {

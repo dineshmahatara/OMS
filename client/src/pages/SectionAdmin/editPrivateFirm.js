@@ -27,7 +27,6 @@ const PrivateFirm = () => {
   if (!firmDetails) {
     return <p>Loading ....</p>
   }
-  
   return (
     <Layout style={{ minHeight: '100vh' }}>
     <Layout>

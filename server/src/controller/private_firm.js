@@ -52,9 +52,27 @@ const getPrivateFirmById = async (req, res) => {
 //   })
 //   // console.log(data)
 //   }
+const editPrivateFirmById = async (req, res) => {
+  console.log(req.body)
+  const data = await Private_Firms.findByIdAndUpdate(req.params.id )
+  console.log(data)
+  if (data) {
+    res.json({
+      msg: 'Data Edited',
+
+    })
+  } else {
+    if (data) {
+      res.json({
+        msg: "Failed to Edit",
+
+      })
+    }
+  }
+}
 const deletePrivateFirm = async (req, res) => {
   // console.log(req.body)
-  const data = await Private_Firms.findByIdAndDelete({ FormPanNo: req.body.FormPanNo })
+  const data = await Private_Firms.findByIdAndDelete(req.params.id )
   if (data) {
     res.json({
       msg: 'This Firm has deleted',
@@ -73,6 +91,7 @@ const deletePrivateFirm = async (req, res) => {
 module.exports = {
   registerPrivateFirm,
   getPrivateFirm,
+  editPrivateFirmById,
   deletePrivateFirm,
   getPrivateFirmById
 

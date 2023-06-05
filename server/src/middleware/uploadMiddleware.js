@@ -13,9 +13,11 @@ const storage = multer.diskStorage({
 
 const fileFilter = function (req, file, cb) {
   const allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/bmp', 'image/webp', 'image/svg+xml', 'image/gif'];
+ console.log(file)
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
+    console.log("test")
     cb({ error: 'fileTypeError', fileTypeError: 'Only JPG, JPEG, PNG, BMP, WEBP, SVG, and GIF files are allowed.' });
   }
 };

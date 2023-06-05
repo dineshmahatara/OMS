@@ -16,7 +16,7 @@ const Homepage = () => {
       <sider>
     
       </sider>
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Content style={{ margin: '20px' }}>
           <div style={{ padding: '50px', minHeight: '360px', backgroundColor: '#4ebf93' }}>
