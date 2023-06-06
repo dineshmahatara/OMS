@@ -9,12 +9,12 @@ import CustomDrawer from '@/Components/Drawer';
 const PrivateFirm = () => {
   const router = useRouter();
   const [firmDetails, setFirmDetails] = useState('');
-  const { formId } = router.query;
+  const { editFormId } = router.query;
 
   useEffect(() => {
     const fetchFirmDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/PrivateFirm/${formId}`);
+        const response = await fetch(`http://localhost:3001/PrivateFirm/${editFormId}`);
         const data = await response.json();
         setFirmDetails(data);
       } catch (error) {
@@ -22,7 +22,7 @@ const PrivateFirm = () => {
       }
     }
     fetchFirmDetails();
-  }, [formId]);
+  }, [editFormId]);
 
   if (!firmDetails) {
     return <p>Loading ....</p>

@@ -53,23 +53,28 @@ const getPrivateFirmById = async (req, res) => {
 //   // console.log(data)
 //   }
 const editPrivateFirmById = async (req, res) => {
-  console.log(req.body)
-  const data = await Private_Firms.findByIdAndUpdate(req.params.id )
-  console.log(data)
-  if (data) {
-    res.json({
-      msg: 'Data Edited',
+  const updatedData = req.body;
+  try {
+    const data = await Private_Firms.findByIdAndUpdate(req.params.id, updatedData, { new: true });
 
-    })
-  } else {
     if (data) {
       res.json({
-        msg: "Failed to Edit",
-
-      })
+        msg: 'Data Edited',
+        data: data
+      });
+    } else {
+      res.status(404).json({
+        msg: 'Failed to find document'
+      });
     }
+  } catch (error) {
+    console.error('Error updating document:', error);
+    res.status(500).json({
+      msg: 'Internal Server Error'
+    });
   }
-}
+};
+
 const deletePrivateFirm = async (req, res) => {
   // console.log(req.body)
   const data = await Private_Firms.findByIdAndDelete(req.params.id )
