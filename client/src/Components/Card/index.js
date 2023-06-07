@@ -39,7 +39,7 @@ const CustomCard = (props) => {
         <div>
           <a href="#" onClick={() => router.push('/SectionAdmin/' + props.item._id)}>
            <EyeOutlined /></a>
-          <a href=""  onClick={() => router.push('/SectionAdmin/' + props.item._id)}> <EditOutlined style={{color:'red'}} /></a>
+          <a href="#"> <EditOutlined style={{color:'red'}} /></a>
           <Popconfirm
             title="Are you sure you want to  delete this form?"
             onConfirm={handleDelete}

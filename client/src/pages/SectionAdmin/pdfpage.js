@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 // import Page from '../Components/Pdf';
-import Page from '../../Components/Pdf'
+import Page from '../../Components/Page/index.js'
 
 const Home = () => {
   return (

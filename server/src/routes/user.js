@@ -7,5 +7,6 @@ const upload = require('../middleware/uploadMiddleware')
 const User =require('../controller/user')
 router.post('/register', upload, User.registerUser)
 router.post('/login', User.loginUser)
+router.put('/changePassword',User.PutChangePassword)
 router.get('/avatar/:id',User.getAvatar)
 module.exports=router;

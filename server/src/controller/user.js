@@ -58,6 +58,37 @@ const registerUser= async (req, res) => {
       res.json({ message: "user does not exist", success: false })
     }
   }
+  const PutChangePassword = async (req, res) => {
+    console.log(req.body)
+    try {
+      const user = await Users.findOne({ _id: req.query._id })
+      if (user) {
+
+        const { password } = user;
+        const isMatched = bcrypt.compareSync(req.body.currentPassword, password);
+        if (isMatched) {
+          const hash = await bcrypt.hashSync(req.body.newPassword, 10);
+          user.password = hash;
+          console.log(hash)
+          const data = await Users.findByIdAndUpdate(user._id, user);
+          if (data) {
+
+            res.status(200).json({ msg: "Password has changed" })
+          }
+          else {
+            res.status(500).json({ msg: "something went wrong" })
+          }
+        } else {
+          res.status(500).json({ msg: "Current password does not matched" })
+        }
+      }
+  
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+
   const getAvatar =  async (req, res) => {
     const userData = await Users.findById(req.params.id)
     const userImage = path.join(__dirname, '../../uploads/avatar', userData.avatarName )
@@ -74,5 +105,6 @@ const registerUser= async (req, res) => {
   module.exports = {
       registerUser,
       loginUser,
+      PutChangePassword,
       getAvatar
     }
