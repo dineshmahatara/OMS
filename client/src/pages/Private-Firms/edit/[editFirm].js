@@ -86,8 +86,8 @@ const EditPage = () => {
 
       <Content style={{ margin: '20px', textAlign: 'center' }}>
       <Row gutter={16}>
-      <Col span={8}> </Col>
-      <Col className="gutter-row" span={16} flex={6}>
+      <Col span={16}> </Col>
+      <Col className="gutter-row" span={8} flex={6}>
     <Space direction="horizontal">
      <div>
       <Row>
