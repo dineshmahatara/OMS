@@ -7,6 +7,7 @@ import Card from '../../Components/Card'
 import { Layout, Pagination, Skeleton, Col, Row, Space } from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
+import CustomDrawer from '@/Components/Drawer';
 const { Content, Sider } = Layout;
 const Homepage = () => {
   const { token, setUserDetails, fullName, phoneNumber, role, id } = useSelector(state => state.user);
@@ -27,13 +28,19 @@ const Homepage = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Layout>
         <sider>
-
+          <CustomDrawer/>
         </sider>
         {/* <Navbar /> */}
 
         <Content style={{ margin: '20px', textAlign: 'center' }}>
 
-          <div><h1 style={{textAlign:'center', margin:444}}> Dashboard will be dispaly here</h1></div>
+          <div style={{ padding: '50px', minHeight: '360px', backgroundColor: 'gray' }}>
+            <h1>Hello</h1>
+            {firmsList.length > 0 ? firmsList.map((item) => {
+              return (<Card item={item} />)
+            }) : <Skeleton />}
+            <Pagination defaultCurrent={0} total={5} pageSize={2} onChange={(page) => fetchFirms(page)} />
+          </div>
         </Content>
       </Layout>
     </Layout>

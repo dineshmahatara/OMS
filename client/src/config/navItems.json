@@ -35,7 +35,8 @@
             {"label": "Edit", "link": "/profile/edit", "icon": "edit"},
             {"label": "View", "link": "/profile/view", "icon": "eye"},
             {"label": "Show", "link": "/profile/show", "icon": "check-circle"},
-            {"label": "Add item", "link": "/SectionAdmin/additem", "icon": "check-circle"}
+            {"label": "Add item", "link": "/SectionAdmin/additem", "icon": "check-circle"},
+            {"label": "Add Firms", "link": "/Private-Firms/addPrivateFirms", "icon": "check-circle"}
           ]
         },
         {"label": "Earnings", "link": "/", "icon": "attach_money",          
@@ -45,7 +46,15 @@
             {"label": "Show", "link": "/profile/show", "icon": "check-circle"}
           ]},
         {"label": "Forms", "link": "Admin/form", "icon": "description"},
-        {"label": "Private Firm", "link": "Admin/privateFirmEntry", "icon": "business"},
+        {"label": "Private Firm",
+         "link": "#",
+        "icon": "business",
+        "subMenu": [
+         {"label": "View Firms", "link": "/Private-Firms/", "icon": "check-circle"},
+         {"label": "Add Firms", "link": "/Private-Firms/addPrivateFirms", "icon": "check-circle"}
+        ]
+      },
+        
         {"label": "PDF", "link": "SectionAdmin/pdfpage", "icon": "picture_as_pdf"}
       ]
     }
