@@ -1,5 +1,5 @@
 
-const { Content, Sider } = Layout;
+
 // import Navbar from '../../Components/Navbar';
 import CustomDrawer from '@/Components/Drawer';
 import Link from 'next/link';
@@ -7,23 +7,30 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { Button, Input,Row,Col, Space,message ,Layout} from 'antd';
+const { Content, Sider } = Layout;
 const EditPage = () => {
   const router = useRouter();
   const { editFirm } = router.query; // Retrieve the editFirm parameter from the URL
 
   const [formData, setFormData] = useState({
     FormPanNo: '',
-    FiscalYear: '',
-    FormName: '',
-    FormObjective: '',
-    FormType: '',
-    Province: '',
-    District: '',
-    Municipality: '',
-    WardNo: '',
-    Tol: '',
-    RegistrationDate: '',
-    FormStatus: '',
+          FiscalYear: '',
+          FormName: '',
+          FormObjective: '',
+          FormType: '',
+          Province: '',
+          District: '',
+          Municipality: '',
+          WardNo: '',
+          Tol: '',
+          RegistrationDate: '',
+          FormStatus: '',
+          FirmOwner: '',
+          FirmOwnerCitizenNo: '',
+          FirmCapital: '',
+          FirmCapitalNepali: '',
+          FormObjective: '',
+          FirmOwnerPhoneNumber: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -209,6 +216,50 @@ const EditPage = () => {
       value={formData.FormStatus}
       onChange={handleInputChange}
     />
+          <label htmlFor="firmOwner">Firm Owner</label>
+      <Input
+        type="text"
+        id="firmOwner"
+        name="FirmOwner"
+        value={formData.FirmOwner}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmOwnerCitizenNo">Firm Owner Citizen No</label>
+      <Input
+        type="text"
+        id="firmOwnerCitizenNo"
+        name="FirmOwnerCitizenNo"
+        value={formData.FirmOwnerCitizenNo}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmCapital">Firm Capital</label>
+      <Input
+        type="number"
+        id="firmCapital"
+        name="FirmCapital"
+        value={formData.FirmCapital}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmCapitalNepali">Firm Capital Nepali</label>
+      <Input
+        type="text"
+        id="firmCapitalNepali"
+        name="FirmCapitalNepali"
+        value={formData.FirmCapitalNepali}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmOwnerPhoneNumber">Firm Owner Phone Number</label>
+      <Input
+        type="text"
+        id="firmOwnerPhoneNumber"
+        name="FirmOwnerPhoneNumber"
+        value={formData.FirmOwnerPhoneNumber}
+        onChange={handleInputChange}
+      />
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Submitting...' : 'Save and Go Back'}
       </button>

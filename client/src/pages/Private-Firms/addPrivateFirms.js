@@ -1,184 +1,313 @@
 
-import React, { useState } from 'react';
- import { Formik, Form, Field } from 'formik';
- import * as Yup from 'yup';
- import Link from 'next/link';
- import style1 from '@/styles/Home.module.css';
- import styles from '../../styles/Register.module.css'
- import { useRouter } from "next/router";
- import newstyles from '@/styles/Home.module.css'
- import { LockOutlined, UserOutlined } from '@ant-design/icons';
- import Calendar from "@sbmdkl/nepali-datepicker-reactjs";
+
+// import Navbar from '../../Components/Navbar';
+import CustomDrawer from '@/Components/Drawer';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import { Button, Input,Row,Col,Select, Space,message ,Layout} from 'antd';
+import Calendar from "@sbmdkl/nepali-datepicker-reactjs";
 import '@sbmdkl/nepali-datepicker-reactjs/dist/index.css';
-import {Input } from 'antd';
-import login from '../SectionAdmin'
- import { Button, message } from 'antd';
- const SignupSchema = Yup.object().shape({
-  FormPanNo: Yup.string()
-     .min(2, 'Too Short!')
-     .max(50, 'Too Long!')
-     .required('Required'),
-    phoneNumber:Yup.string().typeError('must be a number'),
-   Province: Yup.string() .required('Required'),
-   District: Yup.string() .required('Required'),
-   Municipality: Yup.string() .required('Required'),
-   WardNo: Yup.string() .required('Required'),
-   FormName: Yup.string() .required('Required'),
-   Tol: Yup.string() .required('Required')
- });
 
-
- const Register = () => {
+const { Content, Sider } = Layout;
+const Register = () => {
   const [datee, setDate] = useState('');
-  const handleDate = ({ bsDate, adDate }) => {
+const handleDate = ({ bsDate, adDate }) => {
     setDate(bsDate);
   };
-  const [messageApi, contextHolder] = message.useMessage();
-  const router = useRouter();
-  const [file,setFile]= useState(null)
- 
-  const registerFirm = async(values)=> {
-  const requestOptions ={
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(values)
-  }
-  try{
-    const res = await fetch('http://localhost:3001/registerPrivateFirm',requestOptions)
-    const data = await res.json()
-    console.log(data)
-    if(res && data.success){
-      messageApi.success(data.msg);
-    }else{
-      messageApi.error(data.msg);
-    }
-    }catch(err){
-      messageApi.warning(data.msg);
-    }
-   }
-  // This code is for uploading files
-  //  const handleFileSave =(e)=>{
-  //   console.log(e.target.files)
-  //   setFile(e.target.files[0])
-  //  }
-   const wardOptions = Array.from({ length: 10 }, (_, index) => index + 1);
+  // const router = useRouter();
+  // const { editFirm } = router.query; // Retrieve the editFirm parameter from the URL
 
-   return (
-    <div className={styles.formcontainer}>
-    
-    
-      <Formik
-        initialValues={{
-          FormPanNo: '',
+  const [formData, setFormData] = useState({
+    FormPanNo: '',
           FiscalYear: '',
           FormName: '',
           FormObjective: '',
           FormType: '',
-          Province:'',
+          Province: '',
           District: '',
           Municipality: '',
           WardNo: '',
           Tol: '',
-          RegistrationDate:'',
+          RegistrationDate: '',
           FormStatus: '',
-        }}
-        validationSchema={SignupSchema}
-        onSubmit={values => {
-          // same shape as initial values
-          registerFirm(values)
+          FirmOwner: '',
+          FirmOwnerCitizenNo: '',
+          FirmCapital: '',
+          FirmCapitalNepali: '',
+          FormObjective: '',
+          FirmOwnerPhoneNumber: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const validateForm = () => {
+    const {
+      FormName,
+      FormPanNo,
+      FiscalYear,
+      // Add other form fields here
+    } = formData;
+  
+    // Check if any of the fields are empty
+    if (!FormName || !FormPanNo || !FiscalYear) {
+      message.error('Please Fill Empty Field');
+      return false;
+    }
+  
+    // Add additional validation rules for each field if needed
+  
+    return true; // Form is valid
+  };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+      // Validate the form
+  if (!validateForm()) {
+    setIsSubmitting(false);
+    return;
+  }
+
+    // Perform the form submission logic here
+    // You can use axios or any other library to make the API call
+    axios
+      .post(`http://localhost:3001/registerPrivateFirm`, formData)
+      .then((response) => {
+        console.log('Form submitted successfully:', response);
+        if(response){
+          message.success('Form submitted successfully!');
+        }
+        else {
+          message.success('Failed submitted successfully!');
+        }
+        setSubmitSuccess(true);
+        // message.success('Form submitted successfully!');
+        // Redirect the user to the detail page or any other page as needed
+        // router.push(`/Private-Firms/${editFirm}`);
+      })
+      .catch((error) => {
+        console.error('Failed to submit form:', error);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    // Update the form data state when input fields change
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+    <Layout>
+      <sider>
+        <CustomDrawer/>
+      </sider>
+      {/* <Navbar /> */}
+
+      <Content style={{ margin: '20px', textAlign: 'center' }}>
+      <Row gutter={16}>
+      <Col span={16}> </Col>
+      <Col className="gutter-row" span={8} flex={6}>
+    <Space direction="horizontal">
+     <div>
+      <Row>
+        <Col span={6}>
+          <Link href="/Private-Firms"> Back back </Link>
+            
+        </Col>
+        <Col span={18}>
           
-        }}
-      >
-        {({ errors, touched }) => (
-          <Form className={styles.Home_form}>
-            <Field className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />} name="FormName" placeholder="FormName" />
-            {errors.FormName && touched.FormPanNo ? (
-              <div className={styles.errormessage}>{errors.FormName}</div>
-            ) : null}
-            <br/>
-            <Field className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />} name="FormPanNo" placeholder="FormPanNo" />
-            {errors.FormPanNo && touched.FormPanNo ? (
-              <div className={styles.errormessage}>{errors.FormPanNo}</div>
-            ) : null}
-            <br/>
-            <Field className={styles.UserInput} as="select" name="FiscalYear">
-                            <option value="">Choose one</option>
-                            <option value="2082">2080</option>
-                            <option value="2081">2081</option>
-                            <option value="2082">2082</option>
-                            <option value="2083">2083</option>
+      <h1>You are Currently Editing <i>{formData.FormName}</i></h1>
+        </Col>
+      </Row>
+      <form onSubmit={handleFormSubmit}>
+    <label htmlFor="formName">Form Name</label>
+    <Input
+      type="text"
+      id="formName"
+      name="FormName"
+      value={formData.FormName}
+      onChange={handleInputChange}
+    />
+    <label htmlFor="formPanNo">Form Pan No</label>
+    <Input
+      type="text"
+      id="formPanNo"
+      name="FormPanNo"
+      value={formData.FormPanNo}
+      onChange={handleInputChange}
+    />
 
-              </Field>
-          
-                        <Field className={styles.UserInput} as="select" name="Province">
-                            <option value="">Choose one</option>
-                            <option value="Koshi">Koshi</option>
-                            <option value="Lumbini">Lumbini</option>
-                            <option value="Gandagi">Gandagi</option>
+    <label htmlFor="fiscalYear">Fiscal Year</label>
+    <Input
+      type="text"
+      id="fiscalYear"
+      name="FiscalYear"
+      value={formData.FiscalYear}
+      onChange={handleInputChange}
+    />
 
-                        </Field>
-                        {errors.Province && touched.Province ? <div className={styles.errormessage}>{errors.District}</div> : null}
-                        <Field className={styles.UserInput} as="select" name="District">
-                            <option value="">Choose one</option>
-                            <option value="Pyuthan">Pyuthan</option>
-                            <option value="Gulmi">Gulmi</option>
-                            <option value="Palpa">Palpa</option>
+  
 
-                        </Field>
-                        {errors.District && touched.District ? <div className={styles.errormessage}>{errors.District}</div> : null}
-                        
-                        <Field className={styles.UserInput} as="select" name="Municipality">
-                            <option value="">Choose one</option>
-                            <option value="Jhimruk">Jhimruk</option>
-                            <option value="Mandavi">Mandavi</option>
-                            <option value="Gaumukhi">Gaumukhi</option>
+    <label htmlFor="formObjective">Form Objective</label>
+    <Input
+      type="text"
+      id="formObjective"
+      name="FormObjective"
+      value={formData.FormObjective}
+      onChange={handleInputChange}
+    />
 
-                        </Field>
-                        {errors.Municipality && touched.Municipality ? <div className={styles.errormessage}>{errors.Municipality}</div> : null}
-                        <label>Select Firm Type:</label>
-                        <Field className={styles.UserInput} as="select" name="FormType">
-                            <option value="">Choose one</option>
-                            <option value="Type1">Type1</option>
-                            <option value="Type2">Type2</option>
-                            <option value="Type3">Type3</option>
+    <label htmlFor="formType">Form Type</label>
+    <Input
+      type="text"
+      id="formType"
+      name="FormType"
+      value={formData.FormType}
+      onChange={handleInputChange}
+    />
 
-                        </Field>
-                        {errors.FormType && touched.FormType ? <div className={styles.errormessage}>{errors.FormType}</div> : null}
-                        <Field className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />} name="Tol" placeholder="Tol" />
-            {errors.Tol && touched.Tol ? (
-              <div className={styles.errormessage}>{errors.Tol}</div>
-            ) : null}
-            <br/>
-                        <Field className={styles.UserInput} as="select" id="WardNo" name="WardNo">
-            {wardOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </Field>
-         
-          <Calendar className={styles.UserInput}  onChange={handleDate} language="dark" theme="deepdark" dateFormat="YYYY-MM-DD" />
-           
-          <Field  className={styles.UserInput} prefix={<UserOutlined className="site-form-item-icon" />} name="RegistrationDate" value={datee} placeholder="RegistrationDate" />
-          <Field className={styles.UserInput} as="select" name="FormStatus">
-                            <option value="">Choose one</option>
-                            <option value="Active">Active</option>
-                            <option value="Passive">Passive</option>
-                        
+    <label htmlFor="province">Province</label>
+    <Input
+      type="text"
+      id="province"
+      name="Province"
+      value={formData.Province}
+      onChange={handleInputChange}
+    />
 
-              </Field>
-              {/* This code for Upload file */}
-                {/* <input type="file" onChange={handleFileSave}/> */}
-            <button className={styles.Form_button}  type="submit">Submit</button>
-        
-          </Form>
-        
-        )}
-      </Formik>
-      {contextHolder}
-      
+    <label htmlFor="district">District</label>
+    <Input
+      type="text"
+      id="district"
+      name="District"
+      value={formData.District}
+      onChange={handleInputChange}
+    />
+
+    <label htmlFor="municipality">Municipality</label>
+    <Input
+      type="text"
+      id="municipality"
+      name="Municipality"
+      value={formData.Municipality}
+      onChange={handleInputChange}
+    />
+
+    <label htmlFor="wardNo">Ward No</label>
+    <Select
+      id="wardNo"
+      name="WardNo"
+      value={formData.WardNo}
+      onChange={(value) => handleInputChange({ target: { name: 'WardNo', value } })}
+    >
+      {[...Array(9)].map((_, index) => (
+        <Option key={index + 1} value={String(index + 1)}>
+          {index + 1}
+        </Option>
+      ))}
+    </Select>
+
+    <label htmlFor="tol">Tol</label>
+    <Input
+      type="text"
+      id="tol"
+      name="Tol"
+      value={formData.Tol}
+      onChange={handleInputChange}
+    />
+
+    <label htmlFor="registrationDate">Registration Date</label>
+        <Input
+      type="text"
+      id="registrationDate"
+      name="RegistrationDate"
+      value={datee.toString()}
+      onChange={handleInputChange}
+      // style={{ visibility: 'hidden' }}
+    />
+<Calendar onChange={handleDate} language="dark" theme="deepdark" dateFormat="YYYY-MM-DD" />
+
+    <label htmlFor="formStatus">Form Status</label>
+    <Input
+      type="text"
+      id="formStatus"
+      name="FormStatus"
+      value={formData.FormStatus}
+      onChange={handleInputChange}
+    />
+          <label htmlFor="firmOwner">Firm Owner</label>
+      <Input
+        type="text"
+        id="firmOwner"
+        name="FirmOwner"
+        value={formData.FirmOwner}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmOwnerCitizenNo">Firm Owner Citizen No</label>
+      <Input
+        type="text"
+        id="firmOwnerCitizenNo"
+        name="FirmOwnerCitizenNo"
+        value={formData.FirmOwnerCitizenNo}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmCapital">Firm Capital</label>
+      <Input
+        type="number"
+        id="firmCapital"
+        name="FirmCapital"
+        value={formData.FirmCapital}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmCapitalNepali">Firm Capital Nepali</label>
+      <Input
+        type="text"
+        id="firmCapitalNepali"
+        name="FirmCapitalNepali"
+        value={formData.FirmCapitalNepali}
+        onChange={handleInputChange}
+      />
+
+      <label htmlFor="firmOwnerPhoneNumber">Firm Owner Phone Number</label>
+      <Input
+        type="text"
+        id="firmOwnerPhoneNumber"
+        name="FirmOwnerPhoneNumber"
+        value={formData.FirmOwnerPhoneNumber}
+        onChange={handleInputChange}
+      />
+       
+      <button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Save and Go Back'}
+      </button>
+      {submitSuccess && (
+        <div>
+          <p>Form submitted successfully!</p>
+          <Link href="/Private-Firms"> Back back </Link>
+          {/* Additional success message or actions */}
+        </div>
+      )}
+    </form>
     </div>
+    </Space>
+      </Col>
+        </Row>
+      </Content>
+    </Layout>
+  </Layout>
+  
   );
- }
+};
 
- export default Register
+export default Register;

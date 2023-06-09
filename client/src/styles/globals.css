@@ -7,7 +7,7 @@
   }
 
   .PrivateFormPage{
-    background-color:wheat;
+    /* background-color:; */
     margin-left: 304px;
 
     height: 1200px;
@@ -21,7 +21,7 @@
   
   }
   .pfborder {
-    background-color:wheat;
+    background-color:white;
     margin: 10px;
     
 
@@ -154,7 +154,9 @@
     font-size: small;
   }
   .PrivateFormTable{
-    border: 3px solid #000;
+    /* border: 10px solid #000; */
+    border: #000 solid 5px;
+    text-align: center;
     margin: 15px;
     height: 1115px;
     width: 830px;
@@ -166,15 +168,37 @@
     /* border: #000 solid; */
     background-color: white;
     border-color: rebeccapurple;
-    height: 11;
+    height: 20px;
     border: #000;
-    border: 1px;
+    text-align: center;
+    /* border: 1px; */
+    border: 2px solid black
+
     /* background-color: red; */
   
   }
   .PrivateFormTable th {
     font-size: larger;
-    height: 14px;
-    border: #000;
-    border: 1px;
+    height: 40px;
+    text-align: center;
+    /* border: #000; */
+    /* /* border: 1px; */
+
+    border: 2px solid black
   }
+.ptable {
+  border: #000 2px solid;
+
+    height: 1115px;
+    width: 830px;
+    margin: 15px;
+}
+.ptable th,td, tr{
+  /* border: #000 2px solid; */
+  border: 2px double #b8202a;
+
+  height: 40px;
+  padding:0px;
+
+  text-align: var(--c2);
+}

@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Layout, Pagination, Skeleton, Col, Row, Space } from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
-const { Content, Sider } = Layout;
+import Link from 'next/link';
 import Navbar from '../../Components/Navbar';
 import CustomDrawer from '@/Components/Drawer';
 import PrivateFormTemplete from '@/Components/Templete/PrivateFirm';
-
+const { Content, Sider } = Layout;
 const PrivateFirm = () => {
   
   return (
@@ -19,6 +19,7 @@ const PrivateFirm = () => {
       {/* <Navbar /> */}
 
       <Content style={{ margin: '20px', textAlign: 'center' }}>
+      <div> <Link href="addPrivateFirms"> Add new Firm</Link></div>
     <div style={{marginLeft:0}}>
     <PrivateFormTemplete/>
     </div>

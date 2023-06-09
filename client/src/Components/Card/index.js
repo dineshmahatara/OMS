@@ -3,7 +3,7 @@ import { Card, Popconfirm, message } from 'antd';
 import { useRouter } from 'next/router';
 import { EyeOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import axios from 'axios';
-
+import Link from 'next/link';
 const CustomCard = (props) => {
   const router = useRouter();
   const [deleted, setDeleted] = useState(false); // State to track if the record is deleted
@@ -37,21 +37,21 @@ const CustomCard = (props) => {
       bordered={false}
       extra={
         <div>
-          <a href={`/Private-Firms/${props.item._id}`}>
+          <Link href={`/Private-Firms/${props.item._id}`}>
             <EyeOutlined />
-          </a>
-          <a href="#" onClick={handleEdit}>
+          </Link>
+          <Link href="#" onClick={handleEdit}>
             <EditOutlined style={{ color: 'red' }} />
-          </a>
+          </Link>
           <Popconfirm
             title="Are you sure you want to delete this form?"
             onConfirm={handleDelete}
             okText="Yes"
             cancelText="No"
           >
-            <a href="#">
+            <Link href="#">
               <DeleteOutlined style={{ color: 'red' }} />
-            </a>
+            </Link>
           </Popconfirm>
         </div>
       }

@@ -7,6 +7,9 @@ import Card from '../../Components/Card'
 import { Layout, Pagination, Skeleton, Col, Row, Space } from 'antd';
 import Login from '../login';
 import { useTranslation } from "../lib/useTranslation";
+// import styles from '../styles/Home.module.css';
+// import styles from '../../styles/Home.module.css'
+import PDF from '@/Components/PDF';
 const { Content, Sider } = Layout;
 const Homepage = () => {
   const { token, setUserDetails, fullName, phoneNumber, role, id } = useSelector(state => state.user);
@@ -32,7 +35,7 @@ const Homepage = () => {
         {/* <Navbar /> */}
 
         <Content style={{ margin: '20px', textAlign: 'center' }}>
-
+          <PDF/>
           <div><h1 style={{textAlign:'center', margin:444}}> Dashboard will be dispaly here</h1></div>
         </Content>
       </Layout>
