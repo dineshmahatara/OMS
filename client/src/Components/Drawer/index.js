@@ -8,8 +8,11 @@ import Navbar from '../Navbar';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Modal } from "antd";
+import AccountingSettings from '@/pages/Auth/changePassword';
 
 const CustomDrawer = (props) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -26,10 +29,11 @@ const CustomDrawer = (props) => {
     setVisible(false);
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const menu = (
     <Menu>
       <Menu.Item key="changePassword" icon={<LockOutlined />}>
-        Change Password
+        <p onClick={() => setIsModalOpen(true)}>Change Password </p>
       </Menu.Item>
       <Menu.Item onClick={handleLogout} icon={<LogoutOutlined />}>
         Logout
@@ -125,6 +129,13 @@ const CustomDrawer = (props) => {
           </Menu.SubMenu>
         </Menu>
       </Drawer>
+      <Modal
+                footer={null}
+                onCancel={() => setIsModalOpen(false)}
+                open={isModalOpen}>
+                 <AccountingSettings/>
+
+       </Modal>
     </>
   );
 };
