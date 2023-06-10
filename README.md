@@ -1,30 +1,66 @@
-Features
-Auth
-- [x] Login 
-    - [x] frontend form validation
-    - [x] backend validation
-    - [x] password hash
-- [x] Register
-    - [x] password hash
-    - [x] Jwt Token
-    - [x] Env setup
-    - [x] Image Uploader
-      - [x] Image Type img,png,jpg,... only
-      - [x] Image Size Maximum 2 MB
+# Office Management System
 
-- [x] Change Password
-    - [x] Change Password 
- 
-Firm Registration
-- [x] Firm Creating Page
-- [x] Single Page View
-- [x] Firm Document View & Print
-Others
-- [x] Menu With Icons
-- [x] Menu In Custom Drawer
-- [x] Language Switcher Complete  Initialization
-- [x] Nepali Date Picker
+## Technology Stack
+* Next JS
+* React Hook
+* React Props
+* React Icons
+* Nextjs Router  
+* Formik & Yup for Form Validation
+* React Redux 
+* Logger/Persist
+* UI Libraries -Ant Design
+* Mongo DB 
+* Node JS, Express
+* Rest API
+* Axios
+* Password encryption using Bcrypt
+* JsonWebToken Authentication/Authorization
+* Middlewares
+* Multer for file upload feature
+* Pagination
+* JSPDF , html-to-image & html2canvas for Printing PDF
+* puppeteer for Printing PDF
+* CORS 
 
+
+## Features
+- [x] Admin
+  - [x] Login
+  - [x] Registration Private Firms
+  - [x] View Private Firms
+  - [x] User Profile
+  - [x] Change Password
+
+
+- [x] SectionAdmin
+  - [x] Login
+  - [x] Registration Private Firms
+  - [x] View Private Firms
+  - [x] Print Private Firms Doc.
+  - [x] Change Password
+  - [x] SectionAdmin Profile
+
+- [x] SuperAdmin
+  - [x] Login
+  - [x] Registration Private Firms
+  - [x] View Private Firms
+  - [x] Print Private Firms Doc.
+  - [x] Change Password
+  - [x] SuperAdmin Profile
+
+## Future Build up on the project 
+  - [ ] Exporting on PDF,Xls
+  - [ ] Adding Some Other Types of Firm
+  - [ ] Client Registration Application
+  - [ ] Client Tracking Details of Activity
+  - [ ] Differents DashBoard for All
+  - [ ] User Management(CRUD)
+  - [ ] User Info Card Generation
+
+  
+
+  
 
 
 
