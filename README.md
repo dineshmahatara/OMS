@@ -1,21 +1,30 @@
 Features
 Auth
-- [ ] Login 
+- [x] Login 
     - [x] frontend form validation
     - [x] backend validation
-    - [ ] password hash
-- [ ] Register
+    - [x] password hash
+- [x] Register
     - [x] password hash
     - [x] Jwt Token
     - [x] Env setup
+    - [x] Image Uploader
+      - [x] Image Type img,png,jpg,... only
+      - [x] Image Size Maximum 2 MB
+
 - [x] Change Password
-- [x] Nav Bar Complete
-- [x] Language Switcher Complete  Initialization 
-- [x]  Nepali Date Picker
+    - [x] Change Password 
+ 
 Firm Registration
-- [x] Creating Api for Registration
+- [x] Firm Creating Page
 - [x] Single Page View
+- [x] Firm Document View & Print
+Others
 - [x] Menu With Icons
+- [x] Menu In Custom Drawer
+- [x] Language Switcher Complete  Initialization
+- [x] Nepali Date Picker
+
 
 
 
