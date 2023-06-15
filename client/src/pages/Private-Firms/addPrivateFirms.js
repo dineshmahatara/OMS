@@ -9,13 +9,17 @@ import axios from 'axios';
 import { Button, Input,Row,Col,Select, Space,message ,Layout} from 'antd';
 import Calendar from "@sbmdkl/nepali-datepicker-reactjs";
 import '@sbmdkl/nepali-datepicker-reactjs/dist/index.css';
-
+import { useDispatch, useSelector } from 'react-redux';
 const { Content, Sider } = Layout;
 const Register = () => {
+  const { role, id } = useSelector((state) => state.user);
   const [datee, setDate] = useState('');
 const handleDate = ({ bsDate, adDate }) => {
+  
     setDate(bsDate);
   };
+  const dateString = datee.toString();
+  console.log(dateString)
   // const router = useRouter();
   // const { editFirm } = router.query; // Retrieve the editFirm parameter from the URL
 
@@ -61,6 +65,8 @@ const handleDate = ({ bsDate, adDate }) => {
     return true; // Form is valid
   };
   const handleFormSubmit = (e) => {
+    formData.userId =id
+    console.log(formData)
     e.preventDefault();
     setIsSubmitting(true);
       // Validate the form
@@ -72,7 +78,8 @@ const handleDate = ({ bsDate, adDate }) => {
     // Perform the form submission logic here
     // You can use axios or any other library to make the API call
     axios
-      .post(`http://localhost:3001/registerPrivateFirm`, formData)
+      // .post(`http://localhost:3001/registerPrivateFirm`, formData)
+      .post(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/registerPrivateFirm`, formData)
       .then((response) => {
         console.log('Form submitted successfully:', response);
         if(response){
@@ -229,7 +236,7 @@ const handleDate = ({ bsDate, adDate }) => {
       type="text"
       id="registrationDate"
       name="RegistrationDate"
-      value={datee.toString()}
+      value={dateString}
       onChange={handleInputChange}
       // style={{ visibility: 'hidden' }}
     />

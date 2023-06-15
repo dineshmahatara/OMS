@@ -1,7 +1,7 @@
 const Private_Firms = require('../model/private_firm')
 
 const registerPrivateFirm = async (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   const data = await Private_Firms.findOne({ FormPanNo: req.body.FormPanNo })
   if (data) {
     res.json({
@@ -31,7 +31,7 @@ const getPrivateFirmById = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const form = await Private_Firms.findById(id);
+    const form = await Private_Firms.findById(id).populate('userId','-password');;
 
     if (!form) {
       return res.status(404).json({ error: 'form not found' });

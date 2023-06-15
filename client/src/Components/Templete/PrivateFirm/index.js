@@ -57,6 +57,7 @@ const PrivateFormTemplete=()=>{
         try {
           const response = await fetch(`http://localhost:3001/PrivateFirm/${formId}`);
           const data = await response.json();
+          console.log(data)
           setFirmDetails(data);
         } catch (error) {
           console.error('Erro:', error);
@@ -126,7 +127,10 @@ const PrivateFormTemplete=()=>{
 <p><strong>उद्धेश्य:</strong>{firmDetails.FormObjective} </p>
 </div>
 <div className='signature'>
-<p> ....................</p>
+
+
+<p style={{ textDecorationLine: 'underline', textDecorationStyle: 'dashed' }}>{firmDetails?.userId?.[0]?.fullName}</p>
+
 <p> प्रमाणित गर्ने</p>
 <p> अधिकृत</p>
 </div>

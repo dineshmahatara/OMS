@@ -14,7 +14,9 @@ const Homepage = () => {
   const { t, locale, setLocale } = useTranslation();
   const [firmsList, setFirmList] = useState([])
   const fetchFirms = async (page = 2) => {
-    const res = await fetch('http://localhost:3001/PrivateFirm?FormStatus=Passive&page=' + page)
+    // const res = await fetch('http://localhost:3001/PrivateFirm?FormStatus=Passive&page=' + page)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/PrivateFirm?FormStatus=Passive&page=${page}`);
+
     const data = await res.json()
     if (data) {
       setFirmList(data.firmsList)

@@ -57,7 +57,7 @@ const AccountingSettings = () => {
                             body: JSON.stringify(updatedValues),
                         };
                         try {
-                            const res = await fetch(`http://localhost:3001/changePassword/${id}`, requestOptions)
+                            const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/changePassword/${id}`, requestOptions)
                             const data = await res.json()
                             const notify = responseHandler(res, data.errorMsg)
                             // message.success(notify)

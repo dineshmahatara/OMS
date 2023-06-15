@@ -20,6 +20,7 @@ const FirmSchema = new mongoose.Schema({
   FirmOwnerPhoneNumber: String,
   FirmOwnerEmail: String,
   FormStatus: String,
+  userId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Users' }],
 });
 
 FirmSchema.pre('save', async function (next) {

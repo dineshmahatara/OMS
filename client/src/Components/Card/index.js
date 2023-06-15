@@ -11,7 +11,7 @@ const CustomCard = (props) => {
   const handleDelete = async () => {
     try {
       // Perform the delete action
-      await axios.delete(`http://localhost:3001/deletePrivateFirm/${props.item._id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/deletePrivateFirm/${props.item._id}`);
       // Update the state to indicate the deletion
       setDeleted(true);
       message.success('Record deleted');

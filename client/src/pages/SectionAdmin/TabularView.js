@@ -19,7 +19,7 @@ const Homepage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/showPrivateFirm');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/showPrivateFirm`);
       const data = await response.json();
       
       console.log(data)

@@ -111,7 +111,7 @@ const CustomDrawer = (props) => {
             {/* Your other navbar contents */}
             <div className="navbar-center">
               <Dropdown overlay={menu} placement="bottomRight">
-                <Image shape="circle" src={'http://localhost:3001/avatar/' + id} width={50} height={50} alt="avatar" />
+                <Image shape="circle" src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/avatar/` + id} width={50} height={50} alt="avatar" />
               </Dropdown>
               Hello <b>{role} </b>
             </div>
