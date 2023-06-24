@@ -20,6 +20,7 @@ import login from '../SectionAdmin'
      .min(2, 'Too Short!')
      .max(50, 'Too Long!')
      .required('Required'),
+    email: Yup.string().required('required'),
     phoneNumber:Yup.string()
     .typeError('must be a number')
     // .test('checkLength', 'the number should exactly be 10 digits', val=> val.toString().length ==10 )
@@ -93,7 +94,8 @@ import login from '../SectionAdmin'
           fullName: '',
           password: '',
           phoneNumber: '',
-          role:''
+          role:'',
+          email:'',
         }}
         validationSchema={SignupSchema}
         onSubmit={values => {
@@ -126,6 +128,9 @@ import login from '../SectionAdmin'
 
             <Field className={styles.UserInput} name="phoneNumber" placeholder="phoneNumber"/>
             {errors.phoneNumber && touched.phoneNumber ? <div className={styles.errormessage}>{errors.phoneNumber}</div> : null}
+            <br/>
+            <Field className={styles.UserInput} name="email" placeholder="email"/>
+            {errors.email && touched.email ? <div className={styles.errormessage}>{errors.email}</div> : null}
             <br/>
                         <Field className={styles.UserInput} as="select" name="role">
                             <option value="">Choose one</option>

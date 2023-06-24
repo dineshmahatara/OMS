@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     phoneNumber: String,
     role: String,
     licenseNumber: String,
+    email:String,
     vehicleNumber: String,
     vehicleType: String,
     avatarName: {type: String, default: 'defaultAvatar.png'}

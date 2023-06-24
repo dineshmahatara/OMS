@@ -6,6 +6,8 @@ const privateFirmRoute = require('./routes/private_firm')
 
 const app = express()
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 app.use(cors())
 require('dotenv').config()
 const port = process.env.PORT
