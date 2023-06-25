@@ -47,17 +47,16 @@ const registerUser = async (req, res) => {
 // Send email
 async function sendEmail(toEmail, emailContent) {
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
+    service:'gmail',
     secure: false,
     auth: {
-      user: process.env.SMTP_USERNAME,
-      pass: process.env.SMTP_PASSWORD
+      user: process.env.gmailID,
+      pass: process.env.gmailPW
     }
   });
 
   const mailOptions = {
-    from: 'noreply@test.com',
+    from: process.env.gmailID,
     to: toEmail,
     subject: 'Welcome to your website!',
     html: emailContent
